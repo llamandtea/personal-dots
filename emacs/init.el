@@ -5,15 +5,21 @@
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
  '(custom-enabled-themes '(acme))
+ '(custom-safe-themes
+   '("998975856274957564b0ab8f4219300bca12a0f553d41c1438bbca065f298a29" default))
  '(initial-frame-alist '((fullscreen . maximized)))
  '(package-selected-packages
    '(acme-theme dashboard projectile ## company lsp-ui lsp-pyright lsp-mode))
  '(warning-suppress-types '((comp) (comp))))
 
+;; Set default font
+; (set-frame-font "SourceCodePro-Regular 12" nil t)
 
 ;; Enable line numbers
 (global-linum-mode 1)
 
+;; Enable column number
+(column-number-mode 1)
 
 ;; Enable Ido mode
 (ido-mode 1)
@@ -43,7 +49,8 @@
 
 ;; Dashboard - Set items
 (setq dashboard-items '((recents  . 5)
-                        (projects . 5)))
+                        (projects . 5)
+			(bookmarks . 5)))
 
 ;; Dashboard - Set the title
 (setq dashboard-banner-logo-title (concat "Benvenuto su Emacs, " (getenv "USER") "."))
