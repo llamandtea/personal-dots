@@ -9,11 +9,12 @@
    '("998975856274957564b0ab8f4219300bca12a0f553d41c1438bbca065f298a29" default))
  '(initial-frame-alist '((fullscreen . maximized)))
  '(package-selected-packages
-   '(acme-theme dashboard projectile ## company lsp-ui lsp-pyright lsp-mode))
+   '(smart-mode-line acme-theme dashboard projectile ## company lsp-ui lsp-pyright lsp-mode))
  '(warning-suppress-types '((comp) (comp))))
 
 ;; Set default font
-; (set-frame-font "SourceCodePro-Regular 12" nil t)
+(when (member "JuliaMono" (font-family-list))
+  (set-frame-font "JuliaMono-11" t t))
 
 ;; Enable line numbers
 (global-linum-mode 1)
@@ -28,6 +29,12 @@
 
 ;; Set buffer C-x C-b to bs-show
 (global-set-key (kbd "C-x C-b") 'bs-show)
+
+;; Org-mode configuration
+(use-package org
+  :config
+  (setq org-pretty-entities t)
+  (setq org-hide-emphasis-markers t))
 
 ;; Enable MELPA repositories
 (require 'package)
@@ -49,26 +56,26 @@
 
 ;; Dashboard - Set items
 (setq dashboard-items '((recents  . 5)
-                        (projects . 5)
-			(bookmarks . 5)))
+                        (projects . 5)))
 
 ;; Dashboard - Set the title
 (setq dashboard-banner-logo-title (concat "Benvenuto su Emacs, " (getenv "USER") "."))
 
 ;; Dashboard - Set the banner
-(setq dashboard-startup-banner "/home/giuss/.config/emacs/res/dash.png")
+(setq dashboard-startup-banner (concat "/home/" (getenv "USER") "/.config/emacs/res/dash.png"))
 
 ;; Dashboard - Set centered
 (setq dashboard-center-content t)
 
+;; Enable Smart Mode Line
+(sml/setup)
 
 ;; Language Server Protocol packages loading
 (use-package lsp-mode
   :hook ((python-mode) . lsp-deferred)
   :commands lsp)
 
-;; Disable file watchers
-;; (altrimenti cerca di aggiungere tutti i file del venv python alla lista di file watched)
+;; Disable file watching for certain directories
 (setq lsp-enable-file-watchers nil)
 
 (use-package lsp-ui
