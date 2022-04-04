@@ -62,7 +62,7 @@
 (setq dashboard-banner-logo-title (concat "Benvenuto su Emacs, " (getenv "USER") "."))
 
 ;; Dashboard - Set the banner
-(setq dashboard-startup-banner (concat "/home/" (getenv "USER") "/.config/emacs/res/dash.png"))
+(setq dashboard-startup-banner (concat (getenv "HOME") "/.config/emacs/res/dash.png"))
 
 ;; Dashboard - Set centered
 (setq dashboard-center-content t)
