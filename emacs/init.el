@@ -12,7 +12,7 @@
    '(:foreground default :background default :scale 2.0 :html-foreground "Black" :html-background "Transparent" :html-scale 1.0 :matchers
 		 ("begin" "$1" "$" "$$" "\\(" "\\[")))
  '(package-selected-packages
-   '(exec-path-from-shell haskell-mode web-mode magit yasnippet-snippets yasnippet eglot docker-compose-mode dockerfile-mode docker smart-mode-line acme-theme dashboard projectile ## company))
+   '(nix-mode exec-path-from-shell haskell-mode web-mode magit yasnippet-snippets yasnippet eglot docker-compose-mode dockerfile-mode docker smart-mode-line acme-theme dashboard projectile ## company))
  '(visible-bell t)
  '(warning-suppress-types '((comp) (comp))))
 
@@ -59,13 +59,14 @@
 ;; Set buffer C-x C-b to bs-show
 (global-set-key (kbd "C-x C-b") 'bs-show)
 
-
 ;; Org-mode configuration
 (use-package org
-  :config
-  (setq org-pretty-entities t)
-  (setq org-hide-emphasis-markers t)
-  (setq org-startup-with-inline-images t))
+  :custom
+  (org-pretty-entities t)
+  (org-hide-emphasis-markers t)
+  (org-startup-with-inline-images t)
+  (fill-column 128)
+  :hook auto-fill-mode)
 
 
 ;; Dashboard configuration
