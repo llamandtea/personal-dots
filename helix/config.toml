@@ -1,0 +1,7 @@
+theme = "gruvbox_light"
+
+[editor]
+  line-number = "absolute"
+
+[keys.normal]
+C-q = ":format"

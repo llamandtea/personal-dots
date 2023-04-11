@@ -1,0 +1,17 @@
+# Languages config
+
+[[language]]
+name = "nix"
+scope = "source.nix"
+formatter = { command = "alejandra", args = ["--quiet"] }
+language-server = { command = "nil" }
+
+[[ grammar ]]
+name = "nix"
+source = { git = "https://github.com/nix-community/tree-sitter-nix", rev = "02878b40ac77d2889833519c6b6e9e63cfc690e6" }
+
+[[language]]
+name = "bash"
+scope = "source.sh"
+shebangs = ["sh", "bash", "dash"]
+language-server = { command = "bash-language-server", args = ["start"] }
