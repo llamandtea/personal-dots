@@ -1,10 +1,31 @@
-# Languages config
+[language-server.bash-language-server]
+command = "bash-language-server"
+args = ["start"]
+
+[language-server.texlab]
+command = "texlab"
+
+
+[language-server.ltex-ls]
+command = "ltex-ls"
+
+
+[language-server.nil]
+command = "nil"
+
+
+[language-server.rust-analyzer]
+command = "rust-analyzer"
 
 [[language]]
 name = "nix"
 scope = "source.nix"
 formatter = { command = "alejandra", args = ["--quiet"] }
-language-server = { command = "nil" }
+language-servers = [{ name = "nil" }]
+
+
+[language-server.pylsp]
+command = "pylsp"
 
 [[ grammar ]]
 name = "nix"
@@ -14,4 +35,26 @@ source = { git = "https://github.com/nix-community/tree-sitter-nix", rev = "0287
 name = "bash"
 scope = "source.sh"
 shebangs = ["sh", "bash", "dash"]
-language-server = { command = "bash-language-server", args = ["start"] }
+formatter = { command = "shfmt"}
+language-servers = [{ name = "bash-language-server" }]
+
+[[language]]
+name = "rust"
+scope = "source.rs"
+formatter = { command = "rustfmt" }
+language-servers = [{ name = "rust-analyzer" }]
+
+[[language]]
+name = "latex"
+file-types = ["tex"]
+language-servers = [{ name = "texlab"}, { name = "ltex-ls"}]
+
+[[language]]
+name = "bibtex"
+file-types = ["bib"]
+
+[[language]]
+name = "python"
+file-types = ["py"]
+formatter = { command = "black", args = ["-"] }
+language-servers = [{ name = "pylsp" }]

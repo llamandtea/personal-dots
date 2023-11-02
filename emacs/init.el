@@ -30,11 +30,11 @@
 
 ;; Set default font
 (when (member "JuliaMono" (font-family-list))
-  (setq default-frame-alist '((font . "JuliaMono-16"))))
+  (setq default-frame-alist '((font . "JuliaMono-12"))))
 
 
 ;; Enable line numbers
-(global-linum-mode 1)
+;; (global-linum-mode 1)
 
 
 ;; Enable column number
